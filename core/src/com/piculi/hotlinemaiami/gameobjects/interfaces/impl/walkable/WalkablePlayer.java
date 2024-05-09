@@ -11,16 +11,16 @@ public class WalkablePlayer implements Walkable {
         int speed = human.speed;
         int x = human.x;
         int y = human.y;
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+        if(Gdx.input.isKeyPressed(Input.Keys.A)){
           x -= speed;
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+        if(Gdx.input.isKeyPressed(Input.Keys.D)){
             x += speed;
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+        if(Gdx.input.isKeyPressed(Input.Keys.W)){
             y += speed;
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+        if(Gdx.input.isKeyPressed(Input.Keys.S)){
             y -= speed;
         }
         human.x = x;
