@@ -12,11 +12,9 @@ public class ProjectileFactory {
             case AK47_BULLET:
                 return new Ak47Bullet(x, y, heading);
             case ROCKET:
-                //return new Rocket(x, y, 3, heading);
-                throw  new NotImplementedException();
+                return new Rocket(x, y, heading);
             case SHOTGUN_BULLET:
-                //return new ShotgunBullet(x, y, 3, heading);
-                throw  new NotImplementedException();
+                return new ShotgunBullet(x, y, heading);
             default:
                 return null;
         }

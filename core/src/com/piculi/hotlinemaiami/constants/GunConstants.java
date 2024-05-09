@@ -15,6 +15,8 @@ public class GunConstants {
     public static final int PISTOL_HEIGHT = 16;
     public static final Color PISTOL_COLOR = Color.BLACK;
     public static final int PISTOL_SPREAD = 10;
+    public static final int PISTOL_BULLET_FIRED_COUNT = 1;
+    public static final int PISTOL_BULLET_DISTANCE = 1000;
     //Ak47
     public static final int AK47_MAG_CAPACITY = 30;
     public static final int AK47_RELOAD_TIME = 1000;
@@ -27,10 +29,12 @@ public class GunConstants {
     public static final int AK47_HEIGHT = 20;
     public static final Color AK47_COLOR = Color.BROWN;
     public static final int AK47_SPREAD = 20;
+    public static final int AK47_BULLET_FIRED_COUNT = 1;
+    public static final int AK47_BULLET_DISTANCE = 1000;
     //Shotgun
     public static final int SHOTGUN_MAG_CAPACITY = 8;
     public static final int SHOTGUN_RELOAD_TIME = 1000;
-    public static final int SHOTGUN_BULLET_SPEED = 30;
+    public static final int SHOTGUN_BULLET_SPEED = 20;
     public static final int SHOTGUN_BULLET_HEIGHT = 2;
     public static final int SHOTGUN_BULLET_WIDTH = 2;
     public static final Color SHOTGUN_BULLET_COLOR = Color.GOLD;
@@ -39,6 +43,23 @@ public class GunConstants {
     public static final int SHOTGUN_HEIGHT = 20;
     public static final Color SHOTGUN_COLOR = Color.BROWN;
     public static final int SHOTGUN_SPREAD = 30;
+    public static final int SHOTGUN_BULLET_FIRED_COUNT = 25;
+    public static final int SHOTGUN_BULLET_DISTANCE = 200;
+    //RPG
+    public static final int RPG_MAG_CAPACITY = 1;
+    public static final int RPG_RELOAD_TIME = 2000;
+    public static final int RPG_BULLET_SPEED = 6;
+    public static final int RPG_BULLET_HEIGHT = 10;
+    public static final int RPG_BULLET_WIDTH = 5;
+    public static final Color RPG_BULLET_COLOR = Color.BLACK;
+    public static final long RPG_TIME_BETWEEN_SHOTS = 2000;
+    public static final int RPG_WIDTH = 10;
+    public static final int RPG_HEIGHT = 30;
+    public static final Color RPG_COLOR = Color.FOREST;
+    public static final int RPG_SPREAD = 0;
+    public static final int RPG_BULLET_FIRED_COUNT = 1;
+    public static final int RPG_BULLET_DISTANCE = 2000;
+
 
 
 

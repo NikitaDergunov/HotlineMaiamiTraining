@@ -12,11 +12,11 @@ public abstract class Projectile {
     int height;
     Color color;
     int speed;
-    double spread;
+    int maxDistance;
     double heading;
     boolean dead = false;
 
-    protected Projectile(float x, float y, int speed, double heading, int width, int height, int spreadInDegrees, Color color) {
+    protected Projectile(float x, float y, int speed, double heading, int width, int height, int spreadInDegrees,int maxDistance, Color color) {
         this.startX = x;
         this.startY = y;
         this.x = x;
@@ -27,12 +27,13 @@ public abstract class Projectile {
         this.width = width;
         this.height = height;
         this.color = color;
+        this.maxDistance = maxDistance;
     }
 
     public void update(){
         x += speed * Math.cos(heading);
         y += speed * Math.sin(heading);
-        if(Math.abs(x - startX) > 1000 || Math.abs(y - startY) > 1000){
+        if(Math.abs(x - startX) > maxDistance || Math.abs(y - startY) > maxDistance){
             dead = true;
         }
 

@@ -31,12 +31,13 @@ public abstract class Weapon implements Shootable {
     protected int reloadTime;
     protected long reloadStart;
     protected boolean reloading = false;
+    protected int bulletsAtOnce;
 
     ProjectileType projectileType;
     List<Projectile> firedBullets = new ArrayList<>();
     AmmoDisplay ammoDisplay;
 
-    public Weapon(int x, int y, int bulletsLeftInMag, int magCapacity, int magCount, int reloadTime, long timeBetweenShots, ProjectileType projectileType, Color color) {
+    public Weapon(int x, int y, int bulletsLeftInMag, int magCapacity, int magCount, int reloadTime, long timeBetweenShots, int bulletsAtOnce, ProjectileType projectileType, Color color) {
         this.x = x;
         this.y = y;
         this.bulletsLeftInMag = bulletsLeftInMag;
@@ -47,6 +48,7 @@ public abstract class Weapon implements Shootable {
         this.color = color;
         this.timeBetweenShots = timeBetweenShots;
         this.lastShot = System.currentTimeMillis();
+        this.bulletsAtOnce = bulletsAtOnce;
         this.ammoDisplay = new AmmoDisplay(20,30,bulletsLeftInMag,magCapacity,magCount);
     }
 
@@ -83,8 +85,10 @@ public abstract class Weapon implements Shootable {
     private void shoot() {
         bulletsLeftInMag--;
         lastShot = System.currentTimeMillis();
-        Projectile bullet = ProjectileFactory.createProjectile(projectileType,x,y,heading);
-        firedBullets.add(bullet);
+        for(int i = 0; i < bulletsAtOnce; i++){
+            Projectile bullet = ProjectileFactory.createProjectile(projectileType,x,y,heading);
+            firedBullets.add(bullet);
+        }
     }
     public void addMag(){
         magCount++;
