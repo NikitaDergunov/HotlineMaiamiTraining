@@ -1,5 +1,6 @@
 package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileType;
@@ -19,7 +20,7 @@ public class Rpg extends Weapon{
 
 
     @Override
-    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch) {
-        super.draw(shapeRenderer, spriteBatch, RPG_HEIGHT, RPG_WIDTH);
+    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, Camera camera) {
+        super.draw(shapeRenderer, spriteBatch, camera, RPG_HEIGHT, RPG_WIDTH);
     }
 }

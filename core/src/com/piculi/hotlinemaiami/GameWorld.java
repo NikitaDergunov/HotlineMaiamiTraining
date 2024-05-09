@@ -48,7 +48,7 @@ public class GameWorld {
         camera.position.x=(float) player.getX();
         camera.position.y=(float) player.getY();
         camera.update();
-        player.draw(shapeRenderer, spriteBatch);
+        player.draw(shapeRenderer, spriteBatch, camera);
         walls.forEach(wall -> wall.draw(shapeRenderer));
         //rooms.forEach(room -> room.draw(shapeRenderer));
         //enemies.forEach(enemy -> enemy.draw(shapeRenderer));

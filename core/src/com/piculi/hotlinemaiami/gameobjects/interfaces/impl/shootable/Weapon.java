@@ -2,6 +2,7 @@ package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -115,13 +116,13 @@ public abstract class Weapon implements Shootable {
     }
 
 
-    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, int height, int width) {
+    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, Camera camera, int height, int width) {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(color);
         shapeRenderer.rectLine(x,y, (float) (x+height * Math.cos(heading)),(float) (y+height * Math.sin(heading)),width);
         shapeRenderer.end();
         firedBullets.forEach(bullet -> bullet.draw(shapeRenderer));
-        ammoDisplay.draw(spriteBatch);
+        ammoDisplay.draw(spriteBatch,camera);
     }
 
     protected static int getRandomIntInRange(int min, int max) {

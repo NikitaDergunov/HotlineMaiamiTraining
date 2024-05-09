@@ -1,5 +1,6 @@
 package com.piculi.hotlinemaiami.gameobjects;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -18,7 +19,7 @@ public class Enemy extends Human {
     public void update() {
 
     }
-    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch) {
-        super.draw(shapeRenderer, spriteBatch);
+    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, Camera camera) {
+        super.draw(shapeRenderer, spriteBatch,camera);
     }
 }

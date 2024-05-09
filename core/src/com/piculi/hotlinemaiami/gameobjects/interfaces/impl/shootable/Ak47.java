@@ -1,5 +1,6 @@
 package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.piculi.hotlinemaiami.gameobjects.Human;
@@ -25,7 +26,7 @@ public class Ak47 extends Weapon{
     }
 
     @Override
-    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch) {
-        super.draw(shapeRenderer, spriteBatch, AK47_HEIGHT, AK47_WIDTH);
+    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, Camera camera) {
+        super.draw(shapeRenderer, spriteBatch, camera, AK47_HEIGHT, AK47_WIDTH);
     }
 }

@@ -1,5 +1,6 @@
 package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -36,7 +37,9 @@ public class AmmoDisplay {
         this.reloadTimeLeft = reloadTimeLeft;
     }
 
-    public void draw(SpriteBatch batch) {
+    public void draw(SpriteBatch batch, Camera camera) {
+        x = camera.position.x - camera.viewportWidth/2 + 20;
+        y = camera.position.y + camera.viewportHeight/2 - 20;
         String text = bulletsLeftInMag + "/" + (bulletsLeftInMag + (magCapacity * magCount));
         if (reloading){
             text = "Reloading... " + reloadTimeLeft/100 + "\n" + text;

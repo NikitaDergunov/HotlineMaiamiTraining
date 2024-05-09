@@ -1,5 +1,6 @@
 package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.piculi.hotlinemaiami.gameobjects.Human;
@@ -39,8 +40,8 @@ public class Pistol extends Weapon {
     }
 
 
-    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch) {
-        super.draw(shapeRenderer, spriteBatch, PISTOL_HEIGHT, PISTOL_WIDTH);
+    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, Camera camera) {
+        super.draw(shapeRenderer, spriteBatch, camera, PISTOL_HEIGHT, PISTOL_WIDTH);
 
     }
 }
