@@ -9,6 +9,7 @@ import com.piculi.hotlinemaiami.gameobjects.Enemy;
 import com.piculi.hotlinemaiami.gameobjects.Human;
 import com.piculi.hotlinemaiami.gameobjects.Player;
 import com.piculi.hotlinemaiami.gameobjects.Room;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Ak47;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Pistol;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class GameWorld {
         shapeRenderer.setAutoShapeType(true);
         this.spriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
-        player = new Player(0,16, Color.GREEN,new Pistol(0,0));
+        player = new Player(0,16, Color.GREEN,new Ak47(0,0));
         //rooms = level.generateRooms();
         //enemies = level.generateEnemies();
     }

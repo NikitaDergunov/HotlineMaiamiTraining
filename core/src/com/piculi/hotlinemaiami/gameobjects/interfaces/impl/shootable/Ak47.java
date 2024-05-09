@@ -1,4 +1,31 @@
 package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable;
 
-public class Ak47 {
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.piculi.hotlinemaiami.gameobjects.Human;
+import com.piculi.hotlinemaiami.gameobjects.projectile.ProjectileType;
+
+import static com.piculi.hotlinemaiami.constants.GunConstants.AK47_COLOR;
+import static com.piculi.hotlinemaiami.constants.GunConstants.AK47_HEIGHT;
+import static com.piculi.hotlinemaiami.constants.GunConstants.AK47_MAG_CAPACITY;
+import static com.piculi.hotlinemaiami.constants.GunConstants.AK47_RELOAD_TIME;
+import static com.piculi.hotlinemaiami.constants.GunConstants.AK47_TIME_BETWEEN_SHOTS;
+import static com.piculi.hotlinemaiami.constants.GunConstants.AK47_WIDTH;
+
+public class Ak47 extends Weapon{
+    public Ak47(int x, int y) {
+        super(x, y, AK47_MAG_CAPACITY, AK47_MAG_CAPACITY, 2, AK47_RELOAD_TIME, AK47_TIME_BETWEEN_SHOTS, ProjectileType.AK47_BULLET, AK47_COLOR);
+    }
+
+    @Override
+    public void update(Human owner) {
+        super.update(owner);
+
+    }
+
+    @Override
+    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch) {
+        super.draw(shapeRenderer, spriteBatch, AK47_HEIGHT, AK47_WIDTH);
+    }
 }
