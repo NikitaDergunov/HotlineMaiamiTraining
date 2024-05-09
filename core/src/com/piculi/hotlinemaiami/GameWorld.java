@@ -34,7 +34,7 @@ public class GameWorld {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
         camera.update();
-        player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Ak47(0,0));
+        player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Ak47(0,0),camera);
         walls = level.generateWalls();
         //enemies = level.generateEnemies();
     }

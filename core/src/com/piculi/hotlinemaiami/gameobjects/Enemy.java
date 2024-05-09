@@ -11,8 +11,8 @@ import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.walkable.WalkableEne
 import static com.piculi.hotlinemaiami.constants.CharacterConstants.ENEMY_INIT_SPEED;
 
 public class Enemy extends Human {
-    public Enemy(int x, int y, Color color, Shootable weapon) {
-        super(x, y, color, weapon, new WalkableEnemy(),ENEMY_INIT_SPEED, new LookableEnemy());
+    public Enemy(int x, int y, Color color, Shootable weapon, Camera camera) {
+        super(x, y, color, weapon, new WalkableEnemy(),ENEMY_INIT_SPEED, new LookableEnemy(), camera);
     }
 
     @Override

@@ -15,6 +15,8 @@ import static com.piculi.hotlinemaiami.constants.CharacterConstants.CHARACTER_WI
 public  class Human {
      public float x;
      public float y;
+     private float previousX;
+        private float previousY;
     public int radius;
     public double heading = 0;
      public int speed;
@@ -22,18 +24,24 @@ public  class Human {
     private Optional<Shootable> weapon;
     private Walkable movement;
     private Lookable look;
-    public Human(float x, float y, Color color, Shootable weapon, Walkable movement, int speed, Lookable look){
+    private Camera camera;
+    public Human(float x, float y, Color color, Shootable weapon, Walkable movement, int speed, Lookable look, Camera camera){
         this.x = x;
         this.y = y;
+        previousX = x;
+        previousY = y;
         this.radius = CHARACTER_WIDTH;
         this.color = color;
         this.weapon =  Optional.ofNullable(weapon);
         this.movement = movement;
         this.speed = speed;
         this.look = look;
+        this.camera = camera;
     }
     public void update(){
         look.look(this);
+        previousX = x;
+        previousY = y;
         movement.walk(this);
         weapon.ifPresent(shootable -> shootable.update(this));
     }
@@ -88,5 +96,17 @@ public  class Human {
 
     public int getRadius() {
         return radius;
+    }
+
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public float getPreviousX() {
+        return previousX;
+    }
+
+    public float getPreviousY() {
+        return previousY;
     }
 }

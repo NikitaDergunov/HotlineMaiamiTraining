@@ -25,6 +25,7 @@ public class Wall implements Serializable {
         }));
         boolean isColliding = isCollidingInternalHuman(human);
         if (isColliding){
+            pushOut(human);
             color = Color.RED;
         }else {
             color = Color.WHITE;
@@ -62,6 +63,35 @@ public class Wall implements Serializable {
                 ((int)(circleDistanceY - height/2))^2;
 
         return (cornerDistance_sq <= (human.getRadius()^2));
+    }
+    private void pushOut(Human human){
+        float overlapX = 0;
+        float overlapY = 0;
+
+        // Calculate overlap on x axis
+        if (human.getX() < x) {
+            overlapX = (human.getX() + human.getRadius()) - x;
+        } else {
+            overlapX = (x + width) - (human.getX() - human.getRadius());
+        }
+
+        // Calculate overlap on y axis
+        if (human.getY() < y) {
+            overlapY = (human.getY() + human.getRadius()) - y;
+        } else {
+            overlapY = (y + height) - (human.getY() - human.getRadius());
+        }
+
+        // Determine the direction of the human's movement
+        float directionX = human.getX() - human.getPreviousX();
+        float directionY = human.getY() - human.getPreviousY();
+
+        // Push human out of wall along the axis of least penetration and in the direction of the human's movement
+        if (Math.abs(overlapX) < Math.abs(overlapY)) {
+            human.setX(human.getX() - overlapX * Math.signum(directionX));
+        } else {
+            human.setY(human.getY() - overlapY * Math.signum(directionY));
+        }
     }
 
 

@@ -12,8 +12,8 @@ import static com.piculi.hotlinemaiami.constants.CharacterConstants.PLAYER_INIT_
 
 public class Player extends Human {
 
-    public Player(float x, float y, Color color, Shootable weapon) {
-        super(x, y, color, weapon, new WalkablePlayer(), PLAYER_INIT_SPEED, new LookablePlayer());
+    public Player(float x, float y, Color color, Shootable weapon, Camera camera) {
+        super(x, y, color, weapon, new WalkablePlayer(), PLAYER_INIT_SPEED, new LookablePlayer(), camera);
     }
 
     @Override

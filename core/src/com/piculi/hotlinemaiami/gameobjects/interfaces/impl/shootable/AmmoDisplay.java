@@ -40,7 +40,7 @@ public class AmmoDisplay {
     public void draw(SpriteBatch batch, Camera camera) {
         x = camera.position.x - camera.viewportWidth/2 + 20;
         y = camera.position.y + camera.viewportHeight/2 - 20;
-        String text = bulletsLeftInMag + "/" + (bulletsLeftInMag + (magCapacity * magCount));
+        String text = bulletsLeftInMag + "/" + (bulletsLeftInMag + (magCapacity * magCount) + " (" + magCount + ")");
         if (reloading){
             text = "Reloading... " + reloadTimeLeft/100 + "\n" + text;
         }
