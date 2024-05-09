@@ -47,7 +47,7 @@ public abstract class Weapon implements Shootable {
         this.timeBetweenShots = timeBetweenShots;
         this.lastShot = System.currentTimeMillis();
         this.bulletsAtOnce = bulletsAtOnce;
-        this.ammoDisplay = new AmmoDisplay(20,30,bulletsLeftInMag,magCapacity,magCount);
+        this.ammoDisplay = new AmmoDisplay(20,30,bulletsLeftInMag,magCapacity,magCount,projectileType);
     }
 
     @Override
@@ -81,6 +81,7 @@ public abstract class Weapon implements Shootable {
     }
 
     private void shoot() {
+        if(reloading) return;
         bulletsLeftInMag--;
         lastShot = System.currentTimeMillis();
         for(int i = 0; i < bulletsAtOnce; i++){
