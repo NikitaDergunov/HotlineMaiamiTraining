@@ -12,9 +12,11 @@ import com.piculi.hotlinemaiami.gameobjects.interfaces.Shootable;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.Projectile;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileFactory;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileType;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.Rocket;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class Weapon implements Shootable {
     protected float x;
@@ -33,6 +35,7 @@ public abstract class Weapon implements Shootable {
 
     ProjectileType projectileType;
     List<Projectile> firedBullets = new ArrayList<>();
+    List<Projectile> bulletsToRemove = new ArrayList<>();
     AmmoDisplay ammoDisplay;
 
     public Weapon(int x, int y, int bulletsLeftInMag, int magCapacity, int magCount, int reloadTime, long timeBetweenShots, int bulletsAtOnce, ProjectileType projectileType, Color color) {
@@ -108,6 +111,7 @@ public abstract class Weapon implements Shootable {
         }
         reload();
         firedBullets.forEach(Projectile::update);
+        bulletsToRemove.addAll(firedBullets.stream().filter(Projectile::isDead).collect(Collectors.toList()));
         firedBullets.removeIf(Projectile::isDead);
         ammoDisplay.setBulletsLeftInMag(bulletsLeftInMag);
         ammoDisplay.setMagCount(magCount);
@@ -123,6 +127,10 @@ public abstract class Weapon implements Shootable {
         shapeRenderer.rectLine(x,y, (float) (x+height * Math.cos(heading)),(float) (y+height * Math.sin(heading)),width);
         shapeRenderer.end();
         firedBullets.forEach(bullet -> bullet.draw(shapeRenderer));
+        if (projectileType == ProjectileType.ROCKET){
+            bulletsToRemove.forEach(rocket->rocket.draw(shapeRenderer));
+            bulletsToRemove.removeIf(rocket -> ((Rocket)rocket).isExplosionDone());
+        }
         ammoDisplay.draw(spriteBatch,camera);
     }
 
