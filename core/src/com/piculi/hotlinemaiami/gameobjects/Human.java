@@ -13,7 +13,7 @@ import static com.piculi.hotlinemaiami.constants.CharacterConstants.CHARACTER_WI
 public  class Human {
      public int x;
      public int y;
-    private int radius;
+    public int radius;
     public double heading = 0;
      public int speed;
     Color color;
@@ -33,9 +33,10 @@ public  class Human {
     public void update(){
         look.look(this);
         movement.walk(this);
+        weapon.ifPresent(shootable -> shootable.update(this));
     }
     public void draw(ShapeRenderer shapeRenderer){
-        weapon.ifPresent(Shootable::draw);
+        weapon.ifPresent(shootable -> shootable.draw(shapeRenderer));
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(color);
         shapeRenderer.circle(x, y, radius);
