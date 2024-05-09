@@ -85,4 +85,8 @@ public  class Human {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+
+    public int getRadius() {
+        return radius;
+    }
 }

@@ -53,4 +53,24 @@ public abstract class Projectile {
     private void alterHeading(double spread){
         heading += Math.toRadians(Math.random() * spread - spread/2);
     }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setDead(boolean b) {
+        dead = b;
+    }
 }

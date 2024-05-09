@@ -10,6 +10,7 @@ import com.piculi.hotlinemaiami.gameobjects.Human;
 import com.piculi.hotlinemaiami.gameobjects.Player;
 import com.piculi.hotlinemaiami.gameobjects.environment.Room;
 import com.piculi.hotlinemaiami.gameobjects.environment.Wall;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Ak47;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Rpg;
 
 import java.util.List;
@@ -33,13 +34,14 @@ public class GameWorld {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
         camera.update();
-        player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Rpg(0,0));
+        player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Ak47(0,0));
         walls = level.generateWalls();
         //enemies = level.generateEnemies();
     }
 
     public void update(){
         player.update();
+        walls.forEach(wall -> wall.isColliding(player));
     }
     public void draw(){
         ScreenUtils.clear(Color.GRAY);

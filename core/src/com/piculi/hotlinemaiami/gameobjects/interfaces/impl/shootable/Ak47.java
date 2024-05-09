@@ -16,7 +16,7 @@ import static com.piculi.hotlinemaiami.constants.GunConstants.AK47_WIDTH;
 
 public class Ak47 extends Weapon{
     public Ak47(int x, int y) {
-        super(x, y, AK47_MAG_CAPACITY, AK47_MAG_CAPACITY, 2, AK47_RELOAD_TIME, AK47_TIME_BETWEEN_SHOTS,AK47_BULLET_FIRED_COUNT, ProjectileType.AK47_BULLET, AK47_COLOR);
+        super(x, y, AK47_MAG_CAPACITY, AK47_MAG_CAPACITY, 5, AK47_RELOAD_TIME, AK47_TIME_BETWEEN_SHOTS,AK47_BULLET_FIRED_COUNT, ProjectileType.AK47_BULLET, AK47_COLOR);
     }
 
     @Override
