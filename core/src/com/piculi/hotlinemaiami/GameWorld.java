@@ -8,11 +8,9 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.piculi.hotlinemaiami.gameobjects.Enemy;
 import com.piculi.hotlinemaiami.gameobjects.Human;
 import com.piculi.hotlinemaiami.gameobjects.Player;
-import com.piculi.hotlinemaiami.gameobjects.Room;
-import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Ak47;
-import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Pistol;
+import com.piculi.hotlinemaiami.gameobjects.environment.Room;
+import com.piculi.hotlinemaiami.gameobjects.environment.Wall;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Rpg;
-import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Shotgun;
 
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class GameWorld {
     OrthographicCamera camera;
     //game objects
     private Human player;
-    private List<Room> rooms;
+    private List<Wall> walls;
     private List<Enemy> enemies;
     public GameWorld(Level level){
         shapeRenderer = new ShapeRenderer();
@@ -36,7 +34,7 @@ public class GameWorld {
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
         camera.update();
         player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Rpg(0,0));
-        //rooms = level.generateRooms();
+        walls = level.generateWalls();
         //enemies = level.generateEnemies();
     }
 
@@ -51,6 +49,7 @@ public class GameWorld {
         camera.position.y=(float) player.getY();
         camera.update();
         player.draw(shapeRenderer, spriteBatch);
+        walls.forEach(wall -> wall.draw(shapeRenderer));
         //rooms.forEach(room -> room.draw(shapeRenderer));
         //enemies.forEach(enemy -> enemy.draw(shapeRenderer));
     }

@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.piculi.hotlinemaiami.gameobjects.Human;
-import com.piculi.hotlinemaiami.gameobjects.Room;
+import com.piculi.hotlinemaiami.gameobjects.environment.Room;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.Shootable;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.Projectile;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileFactory;

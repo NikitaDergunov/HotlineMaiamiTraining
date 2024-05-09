@@ -1,4 +1,4 @@
-package com.piculi.hotlinemaiami.gameobjects;
+package com.piculi.hotlinemaiami.gameobjects.environment;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
