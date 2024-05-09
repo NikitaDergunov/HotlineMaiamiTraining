@@ -1,0 +1,45 @@
+package com.piculi.hotlinemaiami;
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.ScreenUtils;
+import com.piculi.hotlinemaiami.gameobjects.Enemy;
+import com.piculi.hotlinemaiami.gameobjects.Human;
+import com.piculi.hotlinemaiami.gameobjects.Player;
+import com.piculi.hotlinemaiami.gameobjects.Room;
+
+import java.util.List;
+
+public class GameWorld {
+    //graphics
+    ShapeRenderer shapeRenderer;
+    OrthographicCamera camera;
+    //game objects
+    private Human player;
+    private List<Room> rooms;
+    private List<Enemy> enemies;
+    public GameWorld(Level level){
+        shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setAutoShapeType(true);
+        camera = new OrthographicCamera();
+        player = new Player(0,16, Color.GREEN,null);
+        //rooms = level.generateRooms();
+        //enemies = level.generateEnemies();
+    }
+
+    public void update(){
+        player.update();
+    }
+    public void draw(){
+        ScreenUtils.clear(Color.GRAY);
+        camera.update();
+        player.draw(shapeRenderer);
+        //rooms.forEach(room -> room.draw(shapeRenderer));
+        //enemies.forEach(enemy -> enemy.draw(shapeRenderer));
+    }
+
+    public void dispose() {
+        shapeRenderer.dispose();
+    }
+}
