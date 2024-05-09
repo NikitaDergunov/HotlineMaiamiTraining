@@ -1,6 +1,7 @@
 package com.piculi.hotlinemaiami.gameobjects;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.Lookable;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.Shootable;
@@ -35,8 +36,8 @@ public  class Human {
         movement.walk(this);
         weapon.ifPresent(shootable -> shootable.update(this));
     }
-    public void draw(ShapeRenderer shapeRenderer){
-        weapon.ifPresent(shootable -> shootable.draw(shapeRenderer));
+    public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch){
+        weapon.ifPresent(shootable -> shootable.draw(shapeRenderer, spriteBatch));
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(color);
         shapeRenderer.circle(x, y, radius);

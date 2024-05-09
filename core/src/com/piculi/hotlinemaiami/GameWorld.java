@@ -2,6 +2,7 @@ package com.piculi.hotlinemaiami;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.piculi.hotlinemaiami.gameobjects.Enemy;
@@ -15,6 +16,7 @@ import java.util.List;
 public class GameWorld {
     //graphics
     ShapeRenderer shapeRenderer;
+    SpriteBatch spriteBatch;
     OrthographicCamera camera;
     //game objects
     private Human player;
@@ -23,6 +25,7 @@ public class GameWorld {
     public GameWorld(Level level){
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
+        this.spriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
         player = new Player(0,16, Color.GREEN,new Pistol(0,0));
         //rooms = level.generateRooms();
@@ -35,7 +38,7 @@ public class GameWorld {
     public void draw(){
         ScreenUtils.clear(Color.GRAY);
         camera.update();
-        player.draw(shapeRenderer);
+        player.draw(shapeRenderer, spriteBatch);
         //rooms.forEach(room -> room.draw(shapeRenderer));
         //enemies.forEach(enemy -> enemy.draw(shapeRenderer));
     }
