@@ -12,16 +12,18 @@ public abstract class Projectile {
     int height;
     Color color;
     int speed;
+    double spread;
     double heading;
     boolean dead = false;
 
-    protected Projectile(float x, float y, int speed, double heading, int width, int height, Color color) {
+    protected Projectile(float x, float y, int speed, double heading, int width, int height, int spreadInDegrees, Color color) {
         this.startX = x;
         this.startY = y;
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.heading = heading;
+        alterHeading(spreadInDegrees);
         this.width = width;
         this.height = height;
         this.color = color;
@@ -46,5 +48,8 @@ public abstract class Projectile {
 
     public boolean isDead() {
         return dead;
+    }
+    private void alterHeading(double spread){
+        heading += Math.toRadians(Math.random() * spread - spread/2);
     }
 }
