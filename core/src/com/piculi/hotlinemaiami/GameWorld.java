@@ -16,6 +16,9 @@ import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Shotgun;
 
 import java.util.List;
 
+import static com.piculi.hotlinemaiami.constants.GameConstants.GAME_HEIGHT;
+import static com.piculi.hotlinemaiami.constants.GameConstants.GAME_WIDTH;
+
 public class GameWorld {
     //graphics
     ShapeRenderer shapeRenderer;
@@ -30,7 +33,9 @@ public class GameWorld {
         shapeRenderer.setAutoShapeType(true);
         this.spriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
-        player = new Player(0,16, Color.GREEN,new Rpg(0,0));
+        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
+        camera.update();
+        player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Rpg(0,0));
         //rooms = level.generateRooms();
         //enemies = level.generateEnemies();
     }
@@ -40,6 +45,10 @@ public class GameWorld {
     }
     public void draw(){
         ScreenUtils.clear(Color.GRAY);
+        shapeRenderer.setProjectionMatrix(camera.combined);
+        spriteBatch.setProjectionMatrix(camera.combined);
+        camera.position.x=(float) player.getX();
+        camera.position.y=(float) player.getY();
         camera.update();
         player.draw(shapeRenderer, spriteBatch);
         //rooms.forEach(room -> room.draw(shapeRenderer));

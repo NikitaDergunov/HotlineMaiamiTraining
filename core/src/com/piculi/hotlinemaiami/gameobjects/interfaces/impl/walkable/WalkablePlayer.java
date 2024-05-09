@@ -9,8 +9,8 @@ public class WalkablePlayer implements Walkable {
     @Override
     public void walk(Human human) {
         int speed = human.speed;
-        int x = human.x;
-        int y = human.y;
+        float x = human.x;
+        float y = human.y;
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
           x -= speed;
         }

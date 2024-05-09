@@ -12,8 +12,8 @@ import java.util.Optional;
 import static com.piculi.hotlinemaiami.constants.CharacterConstants.CHARACTER_WIDTH;
 
 public  class Human {
-     public int x;
-     public int y;
+     public float x;
+     public float y;
     public int radius;
     public double heading = 0;
      public int speed;
@@ -21,7 +21,7 @@ public  class Human {
     private Optional<Shootable> weapon;
     private Walkable movement;
     private Lookable look;
-    public Human(int x, int y, Color color, Shootable weapon, Walkable movement, int speed, Lookable look){
+    public Human(float x, float y, Color color, Shootable weapon, Walkable movement, int speed, Lookable look){
         this.x = x;
         this.y = y;
         this.radius = CHARACTER_WIDTH;
@@ -61,19 +61,19 @@ public  class Human {
         return weapon;
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         this.y = y;
     }
 

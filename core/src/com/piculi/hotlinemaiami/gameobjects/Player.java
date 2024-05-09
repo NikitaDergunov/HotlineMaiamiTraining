@@ -11,7 +11,7 @@ import static com.piculi.hotlinemaiami.constants.CharacterConstants.PLAYER_INIT_
 
 public class Player extends Human {
 
-    public Player(int x, int y, Color color, Shootable weapon) {
+    public Player(float x, float y, Color color, Shootable weapon) {
         super(x, y, color, weapon, new WalkablePlayer(), PLAYER_INIT_SPEED, new LookablePlayer());
     }
 
