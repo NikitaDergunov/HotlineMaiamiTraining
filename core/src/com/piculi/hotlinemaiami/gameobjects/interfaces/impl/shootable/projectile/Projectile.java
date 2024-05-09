@@ -1,4 +1,4 @@
-package com.piculi.hotlinemaiami.gameobjects.projectile;
+package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;

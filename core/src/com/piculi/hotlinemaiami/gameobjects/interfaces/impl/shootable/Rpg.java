@@ -2,10 +2,8 @@ package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.piculi.hotlinemaiami.gameobjects.projectile.ProjectileType;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileType;
 
-import static com.piculi.hotlinemaiami.constants.GunConstants.PISTOL_HEIGHT;
-import static com.piculi.hotlinemaiami.constants.GunConstants.PISTOL_WIDTH;
 import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_BULLET_COLOR;
 import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_BULLET_FIRED_COUNT;
 import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_HEIGHT;

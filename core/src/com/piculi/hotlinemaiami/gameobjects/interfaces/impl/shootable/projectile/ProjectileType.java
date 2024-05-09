@@ -1,4 +1,4 @@
-package com.piculi.hotlinemaiami.gameobjects.projectile;
+package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile;
 
 public enum ProjectileType {
     PISTOL_BULLET,

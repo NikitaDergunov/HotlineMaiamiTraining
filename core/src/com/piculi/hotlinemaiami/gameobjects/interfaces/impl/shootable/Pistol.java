@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.piculi.hotlinemaiami.gameobjects.Human;
 import com.piculi.hotlinemaiami.gameobjects.Room;
-import com.piculi.hotlinemaiami.gameobjects.projectile.ProjectileType;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileType;
 
 import java.util.List;
 

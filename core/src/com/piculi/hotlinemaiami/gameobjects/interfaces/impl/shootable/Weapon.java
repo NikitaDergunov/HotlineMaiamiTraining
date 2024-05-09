@@ -8,15 +8,12 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.piculi.hotlinemaiami.gameobjects.Human;
 import com.piculi.hotlinemaiami.gameobjects.Room;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.Shootable;
-import com.piculi.hotlinemaiami.gameobjects.projectile.Projectile;
-import com.piculi.hotlinemaiami.gameobjects.projectile.ProjectileFactory;
-import com.piculi.hotlinemaiami.gameobjects.projectile.ProjectileType;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.Projectile;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileFactory;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileType;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.piculi.hotlinemaiami.constants.GunConstants.PISTOL_HEIGHT;
-import static com.piculi.hotlinemaiami.constants.GunConstants.PISTOL_WIDTH;
 
 public abstract class Weapon implements Shootable {
     protected float x;

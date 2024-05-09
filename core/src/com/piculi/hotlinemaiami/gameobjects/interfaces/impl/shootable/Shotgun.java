@@ -1,9 +1,8 @@
 package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.piculi.hotlinemaiami.gameobjects.projectile.ProjectileType;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileType;
 
 import static com.piculi.hotlinemaiami.constants.GunConstants.SHOTGUN_BULLET_FIRED_COUNT;
 import static com.piculi.hotlinemaiami.constants.GunConstants.SHOTGUN_COLOR;

@@ -1,8 +1,4 @@
-package com.piculi.hotlinemaiami.gameobjects.projectile;
-
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import static com.piculi.hotlinemaiami.constants.GunConstants.PISTOL_BULLET_SPEED;
+package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile;
 
 public class ProjectileFactory {
     public static Projectile createProjectile(ProjectileType type, float x, float y, double heading){
