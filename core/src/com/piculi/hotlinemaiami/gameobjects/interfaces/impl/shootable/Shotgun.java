@@ -15,8 +15,8 @@ import static com.piculi.hotlinemaiami.constants.GunConstants.SHOTGUN_WIDTH;
 
 public class Shotgun extends Weapon{
 
-    public Shotgun(int x, int y) {
-        super(x, y, SHOTGUN_MAG_CAPACITY, SHOTGUN_MAG_CAPACITY, 2, SHOTGUN_RELOAD_TIME, SHOTGUN_TIME_BETWEEN_SHOTS,SHOTGUN_BULLET_FIRED_COUNT, ProjectileType.SHOTGUN_BULLET, SHOTGUN_COLOR);
+    public Shotgun(int x, int y, boolean dispalyAmmo) {
+        super(x, y, SHOTGUN_MAG_CAPACITY, SHOTGUN_MAG_CAPACITY, 2, SHOTGUN_RELOAD_TIME, SHOTGUN_TIME_BETWEEN_SHOTS,SHOTGUN_BULLET_FIRED_COUNT, ProjectileType.SHOTGUN_BULLET, SHOTGUN_COLOR, dispalyAmmo);
     }
 
     @Override

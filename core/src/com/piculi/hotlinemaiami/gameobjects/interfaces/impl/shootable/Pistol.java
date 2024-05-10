@@ -18,8 +18,8 @@ import static com.piculi.hotlinemaiami.constants.GunConstants.PISTOL_TIME_BETWEE
 import static com.piculi.hotlinemaiami.constants.GunConstants.PISTOL_WIDTH;
 
 public class Pistol extends Weapon {
-    public Pistol(int x, int y) {
-        super(x, y, PISTOL_MAG_CAPACITY, PISTOL_MAG_CAPACITY, 2, PISTOL_RELOAD_TIME,PISTOL_TIME_BETWEEN_SHOTS,PISTOL_BULLET_FIRED_COUNT, ProjectileType.PISTOL_BULLET, PISTOL_COLOR);
+    public Pistol(int x, int y, boolean dispalyAmmo) {
+        super(x, y, PISTOL_MAG_CAPACITY, PISTOL_MAG_CAPACITY, 2, PISTOL_RELOAD_TIME,PISTOL_TIME_BETWEEN_SHOTS,PISTOL_BULLET_FIRED_COUNT, ProjectileType.PISTOL_BULLET, PISTOL_COLOR, dispalyAmmo);
     }
 
     @Override

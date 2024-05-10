@@ -32,13 +32,14 @@ public abstract class Weapon implements Shootable {
     protected long reloadStart;
     protected boolean reloading = false;
     protected int bulletsAtOnce;
+    protected boolean dispalyAmmo = true;
 
     ProjectileType projectileType;
     List<Projectile> firedBullets = new ArrayList<>();
     List<Projectile> bulletsToRemove = new ArrayList<>();
     AmmoDisplay ammoDisplay;
 
-    public Weapon(int x, int y, int bulletsLeftInMag, int magCapacity, int magCount, int reloadTime, long timeBetweenShots, int bulletsAtOnce, ProjectileType projectileType, Color color) {
+    public Weapon(int x, int y, int bulletsLeftInMag, int magCapacity, int magCount, int reloadTime, long timeBetweenShots, int bulletsAtOnce, ProjectileType projectileType, Color color, boolean dispalyAmmo) {
         this.x = x;
         this.y = y;
         this.bulletsLeftInMag = bulletsLeftInMag;
@@ -50,6 +51,7 @@ public abstract class Weapon implements Shootable {
         this.timeBetweenShots = timeBetweenShots;
         this.lastShot = System.currentTimeMillis();
         this.bulletsAtOnce = bulletsAtOnce;
+        this.dispalyAmmo = dispalyAmmo;
         this.ammoDisplay = new AmmoDisplay(20,30,bulletsLeftInMag,magCapacity,magCount,projectileType);
     }
 
@@ -62,8 +64,8 @@ public abstract class Weapon implements Shootable {
     public boolean areBulletsColiding(List<Room> rooms) {
         return false;
     }
-
-    private void reload() {
+    @Override
+    public void reload() {
         if(bulletsLeftInMag == 0 && !reloading){
             reloading = true;
         }
@@ -82,8 +84,8 @@ public abstract class Weapon implements Shootable {
         }
 
     }
-
-    private void shoot() {
+    @Override
+    public void shoot() {
         if(reloading) return;
         bulletsLeftInMag--;
         lastShot = System.currentTimeMillis();
@@ -131,7 +133,7 @@ public abstract class Weapon implements Shootable {
             bulletsToRemove.forEach(rocket->rocket.draw(shapeRenderer));
             bulletsToRemove.removeIf(rocket -> ((Rocket)rocket).isExplosionDone());
         }
-        ammoDisplay.draw(spriteBatch,camera);
+        if (dispalyAmmo) ammoDisplay.draw(spriteBatch,camera);
     }
 
     public List<Projectile> getFiredBullets() {

@@ -11,6 +11,8 @@ import java.util.List;
 public interface Shootable {
     public boolean areBulletsColiding(Human human);
     boolean areBulletsColiding(List<Room> rooms);
+    void reload();
+    void shoot();
 
     public void update(Human owner);
     public void draw(ShapeRenderer shapeRenderer, SpriteBatch spriteBatch, Camera camera);

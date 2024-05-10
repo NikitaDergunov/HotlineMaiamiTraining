@@ -62,7 +62,7 @@ public class AmmoDisplay {
             case SHOTGUN_BULLET:
                 return "Shotgun";
             case ROCKET:
-                return "Rocket";
+                return "Rpg";
             case AK47_BULLET:
                 return "AK47";
             default:

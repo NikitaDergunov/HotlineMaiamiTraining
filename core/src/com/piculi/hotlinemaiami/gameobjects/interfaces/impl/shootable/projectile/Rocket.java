@@ -11,6 +11,7 @@ import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_BULLET_WIDTH;
 import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_SPREAD;
 
 public class Rocket extends Projectile{
+    private float explosionRadius = 0;
     long explosionTime;
     boolean explosionDone = false;
     protected Rocket(float x, float y, double heading) {
@@ -31,7 +32,8 @@ public class Rocket extends Projectile{
         if(dead && !explosionDone){
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
             shapeRenderer.setColor(Color.RED);
-            shapeRenderer.circle(x,y, 0.75f * (System.currentTimeMillis() - explosionTime));
+            explosionRadius = 0.75f * (System.currentTimeMillis() - explosionTime);
+            shapeRenderer.circle(x,y, explosionRadius);
             shapeRenderer.end();
         }
 
@@ -39,5 +41,11 @@ public class Rocket extends Projectile{
 
     public boolean isExplosionDone() {
         return explosionDone;
+    }
+    public float getExplosionRadius() {
+        return explosionRadius;
+    }
+    public boolean isExploding(){
+        return !explosionDone&&dead;
     }
 }

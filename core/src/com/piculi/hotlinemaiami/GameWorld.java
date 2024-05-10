@@ -13,6 +13,7 @@ import com.piculi.hotlinemaiami.gameobjects.environment.Wall;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Ak47;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Rpg;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.piculi.hotlinemaiami.constants.GameConstants.GAME_HEIGHT;
@@ -26,7 +27,7 @@ public class GameWorld {
     //game objects
     private Human player;
     private List<Wall> walls;
-    private List<Enemy> enemies;
+    private List<Enemy> enemies = new ArrayList<>();
     public GameWorld(Level level){
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
@@ -34,14 +35,17 @@ public class GameWorld {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
         camera.update();
-        player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Rpg(0,0),camera);
+        player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Rpg(0,0,true),camera);
         walls = level.generateWalls();
+        enemies.add(new Enemy(100,100,Color.RED,new Ak47(0,0, false),camera,(Player) player));
         //enemies = level.generateEnemies();
     }
 
     public void update(){
         player.update();
+        enemies.forEach(Enemy::update);
         walls.forEach(wall -> wall.isColliding(player));
+        walls.forEach(wall -> enemies.forEach(wall::isColliding));
     }
     public void draw(){
         ScreenUtils.clear(Color.GRAY);
@@ -52,6 +56,7 @@ public class GameWorld {
         camera.update();
         player.draw(shapeRenderer, spriteBatch, camera);
         walls.forEach(wall -> wall.draw(shapeRenderer));
+        enemies.forEach(enemy -> enemy.draw(shapeRenderer, spriteBatch, camera));
         //rooms.forEach(room -> room.draw(shapeRenderer));
         //enemies.forEach(enemy -> enemy.draw(shapeRenderer));
     }
