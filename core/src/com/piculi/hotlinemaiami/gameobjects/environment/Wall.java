@@ -142,21 +142,9 @@ public class Wall implements Serializable {
     public void setHeight(float height) {
         this.height = height;
     }
-    public static Wall fromJson(File wallJsonFile){
-        Json json = new Json();
-        String wallJsonString = readStringFromFile(wallJsonFile);
+    public static Wall fromJson(String wallJsonString){
+        Json json = new Json();;
         return json.fromJson(Wall.class, wallJsonString);
     }
-    private static String readStringFromFile(File file){
-        StringBuilder stringBuilder = new StringBuilder();
-        try(FileReader fileReader = new FileReader(file)){
-            int c;
-            while ((c = fileReader.read()) != -1){
-                stringBuilder.append((char) c);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return stringBuilder.toString();
-    }
+
 }

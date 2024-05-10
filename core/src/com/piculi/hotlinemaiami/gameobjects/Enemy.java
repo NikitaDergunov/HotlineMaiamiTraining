@@ -4,8 +4,11 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Json;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.Shootable;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.loolkable.LookableEnemyNaive;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Weapon;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileType;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.walkable.WalkableEnemyNaive;
 
 import static com.piculi.hotlinemaiami.constants.CharacterConstants.ENEMY_INIT_SPEED;
@@ -39,5 +42,10 @@ public class Enemy extends Human {
 
     public void setSeesPlayer(boolean seesPlayer) {
         this.seesPlayer = seesPlayer;
+    }
+    public static Enemy fromJson(String json, Camera camera, Player player){
+        Json jsonParser = new Json();
+        EnemyForCreator enemyContainer = jsonParser.fromJson(EnemyForCreator.class, json);
+        return new Enemy((int) enemyContainer.x, (int) enemyContainer.y, Color.RED, Weapon.fromProjectile(/**enemyContainer.type**/ProjectileType.getRandomWithoutRailOrRocket(),false), camera, player);
     }
 }

@@ -64,6 +64,10 @@ public  class Human {
         shapeRenderer.line(x, y, endX,endY );
 
         shapeRenderer.end();
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(Color.BLACK);
+        shapeRenderer.circle(x, y, radius);
+        shapeRenderer.end();
     }
     public void setWeapon(Shootable weapon){
         this.weapon = Optional.of(weapon);
@@ -112,7 +116,7 @@ public  class Human {
         return previousY;
     }
     public void hit(){
-        hits+=1f;
+        hits+=3f;
         if (hits>=radius){
             dead = true;
         }

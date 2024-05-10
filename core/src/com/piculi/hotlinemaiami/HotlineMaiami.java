@@ -10,7 +10,7 @@ public class HotlineMaiami extends ApplicationAdapter {
 	
 	@Override
 	public void create () {
-		this.gameWorld = new GameWorld(new Level(1));
+		this.gameWorld = new GameWorld(new Level("2"));
 	}
 
 	@Override

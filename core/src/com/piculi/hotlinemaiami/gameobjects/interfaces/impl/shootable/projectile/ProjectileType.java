@@ -3,9 +3,10 @@ package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectil
 public enum ProjectileType {
     PISTOL_BULLET("Pistol"),
     AK47_BULLET("Ak47"),
-    ROCKET("Rpg"),
+
     SHOTGUN_BULLET("Shotgun"),
-    RAILGUN_BULLET("Railgun");
+    RAILGUN_BULLET("Railgun"),
+    ROCKET("Rpg");
     private String gunName;
 
     ProjectileType(String gunName) {
@@ -13,5 +14,19 @@ public enum ProjectileType {
     }
     public String getGunName() {
         return gunName;
+    }
+    public static ProjectileType getRandomWithoutRailOrRocket(){
+        int random = (int) (Math.random() * 3);
+        switch (random){
+            case 0:
+                return PISTOL_BULLET;
+            case 1:
+                return AK47_BULLET;
+            case 2:
+                return SHOTGUN_BULLET;
+            default:
+                return null;
+        }
+
     }
 }

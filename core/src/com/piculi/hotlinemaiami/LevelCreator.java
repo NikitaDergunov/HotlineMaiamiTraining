@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.piculi.hotlinemaiami.gameobjects.EnemyForCreator;
 import com.piculi.hotlinemaiami.gameobjects.environment.Wall;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.ProjectileType;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -25,12 +27,23 @@ public class LevelCreator extends ApplicationAdapter {
     ShapeRenderer shapeRenderer;
     OrthographicCamera camera;
     List<Wall> walls = new ArrayList<>();
+    List<EnemyForCreator> enemies = new ArrayList<>();
     Wall activeWall;
     public void update(){
        updateCamera();
          createWall();
+         createEnemy();
             saveLevel();
     }
+
+    private void createEnemy() {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.E)){
+            com.badlogic.gdx.math.Vector3 touchPos = new com.badlogic.gdx.math.Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+            camera.unproject(touchPos);
+            enemies.add(new EnemyForCreator(touchPos.x, touchPos.y, ProjectileType.PISTOL_BULLET));
+        }
+    }
+
     private void createWall(){
         if(Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)){
             isCreatingWall = true;
@@ -89,7 +102,7 @@ public class LevelCreator extends ApplicationAdapter {
         for (Wall wall : walls) {
             Json json = new Json();
             String wallJson = json.toJson(wall);
-            File file = new File("levels/"+name+"/wall"+i+".json");
+            File file = new File("levels/"+name+"/walls/wall"+i+".json");
             i++;
             try (java.io.FileWriter fileWriter = new java.io.FileWriter(file)){
                 fileWriter.write(wallJson);
@@ -97,8 +110,19 @@ public class LevelCreator extends ApplicationAdapter {
                 e.printStackTrace();
             }
         }
+        i = 0;
+        for (EnemyForCreator enemy : enemies) {
+            Json json = new Json();
+            String enemyJson = json.toJson(enemy);
+            File file = new File("levels/"+name+"/enemies/enemy"+i+".json");
+            i++;
+            try (java.io.FileWriter fileWriter = new java.io.FileWriter(file)){
+                fileWriter.write(enemyJson);
+            }catch (java.io.IOException e){
+                e.printStackTrace();
+            }
         }
-    }
+    }}
 
 
     public void draw(){
@@ -107,6 +131,7 @@ public class LevelCreator extends ApplicationAdapter {
         if(activeWall != null)
             activeWall.draw(shapeRenderer);
         walls.forEach(wall -> wall.draw(shapeRenderer));
+        enemies.forEach(enemy -> enemy.draw(shapeRenderer));
     }
 
     @Override
@@ -131,8 +156,12 @@ public class LevelCreator extends ApplicationAdapter {
         shapeRenderer.dispose();
     }
     private void createLevelDirectory(){
-        File file = new File("levels/"+name);
-        file.mkdirs();
+        File leveldir = new File("levels/"+name);
+        leveldir.mkdirs();
+        File wallsdir = new File("levels/"+name+"/walls");
+        wallsdir.mkdirs();
+        File enemiesdir = new File("levels/"+name+"/enemies");
+        enemiesdir.mkdirs();
     }
 
 }

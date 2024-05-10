@@ -56,7 +56,7 @@ public abstract class Projectile {
         boolean isColliding = (distanceX * distanceX) + (distanceY * distanceY) < (human.getRadius() * human.getRadius());
         if(isColliding){
             dead = true;
-            if(human instanceof Enemy)human.hit();
+            human.hit();
         }
         return (distanceX * distanceX) + (distanceY * distanceY) <= (human.getRadius() * human.getRadius());
     }
