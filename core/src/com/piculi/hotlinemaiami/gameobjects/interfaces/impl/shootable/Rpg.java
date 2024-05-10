@@ -15,7 +15,7 @@ import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_WIDTH;
 
 public class Rpg extends Weapon{
     public Rpg(int x, int y, boolean dispalyAmmo) {
-        super(x, y, RPG_MAG_CAPACITY, RPG_MAG_CAPACITY, 2, RPG_RELOAD_TIME, RPG_TIME_BETWEEN_SHOTS, RPG_BULLET_FIRED_COUNT, ProjectileType.ROCKET, RPG_BULLET_COLOR, dispalyAmmo);
+        super(x, y, RPG_MAG_CAPACITY, RPG_MAG_CAPACITY, 999, RPG_RELOAD_TIME, RPG_TIME_BETWEEN_SHOTS, RPG_BULLET_FIRED_COUNT, ProjectileType.ROCKET, RPG_BULLET_COLOR, dispalyAmmo);
     }
 
 

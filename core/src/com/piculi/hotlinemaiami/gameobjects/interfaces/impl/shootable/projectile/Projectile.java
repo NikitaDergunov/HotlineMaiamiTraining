@@ -2,6 +2,8 @@ package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectil
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.piculi.hotlinemaiami.gameobjects.Enemy;
+import com.piculi.hotlinemaiami.gameobjects.Human;
 
 public abstract class Projectile {
     private final float startX;
@@ -11,7 +13,7 @@ public abstract class Projectile {
     int width;
     int height;
     Color color;
-    int speed;
+    float speed;
     int maxDistance;
     double heading;
     boolean dead = false;
@@ -44,6 +46,19 @@ public abstract class Projectile {
         shapeRenderer.rectLine(x,y, (float) (x+height * Math.cos(heading)),(float) (y+height * Math.sin(heading)),width);
         shapeRenderer.end();
 
+    }
+    public boolean isCollidingWithHuman(Human human){
+        float closestX = Math.max(x, Math.min(human.getX(), x + width));
+        float closestY = Math.max(y, Math.min(human.getY(), y + height));
+
+        float distanceX = human.getX() - closestX;
+        float distanceY = human.getY() - closestY;
+        boolean isColliding = (distanceX * distanceX) + (distanceY * distanceY) < (human.getRadius() * human.getRadius());
+        if(isColliding){
+            dead = true;
+            if(human instanceof Enemy)human.hit();
+        }
+        return (distanceX * distanceX) + (distanceY * distanceY) <= (human.getRadius() * human.getRadius());
     }
 
 

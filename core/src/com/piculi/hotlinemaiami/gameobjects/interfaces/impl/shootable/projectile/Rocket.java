@@ -2,7 +2,9 @@ package com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectil
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.piculi.hotlinemaiami.gameobjects.Human;
 
+import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_BULLET_ACCELERATION;
 import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_BULLET_COLOR;
 import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_BULLET_DISTANCE;
 import static com.piculi.hotlinemaiami.constants.GunConstants.RPG_BULLET_HEIGHT;
@@ -19,6 +21,7 @@ public class Rocket extends Projectile{
     }
     @Override
     public void update() {
+        speed+=RPG_BULLET_ACCELERATION;
         super.update();
         if (dead){
             explosionTime = System.currentTimeMillis();
@@ -37,6 +40,23 @@ public class Rocket extends Projectile{
             shapeRenderer.end();
         }
 
+    }
+    @Override
+    public boolean isCollidingWithHuman(Human human){
+        if(isExploding()){
+            float distanceX = human.getX() - x;
+            float distanceY = human.getY() - y;
+            boolean isColliding = (distanceX * distanceX) + (distanceY * distanceY) < (explosionRadius * explosionRadius);
+            if(isColliding){
+                human.dead = true;
+            }
+            return isColliding;
+        }
+        boolean cl = super.isCollidingWithHuman(human);
+        if(cl){
+            human.dead = true;
+        }
+        return cl;
     }
 
     public boolean isExplosionDone() {

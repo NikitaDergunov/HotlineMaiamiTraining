@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Json;
 import com.piculi.hotlinemaiami.gameobjects.Human;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Weapon;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.Projectile;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.projectile.Rail;
 
 import java.io.File;
 import java.io.FileReader;
@@ -39,7 +40,7 @@ public class Wall implements Serializable {
         }else {
             color = Color.WHITE;
         }
-        return isColliding;
+        return !(projectile instanceof Rail) && isColliding;
     }
 
     private boolean isCollidingInternalProjectile(Projectile projectile){

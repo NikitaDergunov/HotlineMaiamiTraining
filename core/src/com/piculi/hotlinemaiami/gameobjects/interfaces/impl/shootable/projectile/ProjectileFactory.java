@@ -11,6 +11,8 @@ public class ProjectileFactory {
                 return new Rocket(x, y, heading);
             case SHOTGUN_BULLET:
                 return new ShotgunBullet(x, y, heading);
+            case RAILGUN_BULLET:
+                return new Rail(x, y, heading);
             default:
                 return null;
         }

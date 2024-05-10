@@ -47,7 +47,7 @@ public class AmmoDisplay {
         if (reloading){
             text = "Reloading... " + reloadTimeLeft/100 + "\n" + text;
         }
-        text = text + "\n" + getWeaponName();
+        text = text + "\n" + pr.getGunName();
 
         batch.begin();
         font.setColor(color);
@@ -55,18 +55,5 @@ public class AmmoDisplay {
         batch.end();
     }
 
-    private String getWeaponName() {
-        switch (pr){
-            case  PISTOL_BULLET:
-                return "Pistol";
-            case SHOTGUN_BULLET:
-                return "Shotgun";
-            case ROCKET:
-                return "Rpg";
-            case AK47_BULLET:
-                return "AK47";
-            default:
-                return "Unknown";
-        }
-    }
+
 }

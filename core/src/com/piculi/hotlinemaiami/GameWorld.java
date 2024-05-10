@@ -11,7 +11,10 @@ import com.piculi.hotlinemaiami.gameobjects.Player;
 import com.piculi.hotlinemaiami.gameobjects.environment.Room;
 import com.piculi.hotlinemaiami.gameobjects.environment.Wall;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Ak47;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Pistol;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Railgun;
 import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Rpg;
+import com.piculi.hotlinemaiami.gameobjects.interfaces.impl.shootable.Shotgun;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +38,9 @@ public class GameWorld {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
         camera.update();
-        player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Rpg(0,0,true),camera);
+        player = new Player(camera.position.x,camera.position.y, Color.GREEN,new Railgun(0,0,true),camera);
         walls = level.generateWalls();
-        enemies.add(new Enemy(100,100,Color.RED,new Ak47(0,0, false),camera,(Player) player));
+        enemies.add(new Enemy(100,100,Color.RED,new Pistol(0,0, false),camera,(Player) player));
         //enemies = level.generateEnemies();
     }
 
@@ -46,6 +49,9 @@ public class GameWorld {
         enemies.forEach(Enemy::update);
         walls.forEach(wall -> wall.isColliding(player));
         walls.forEach(wall -> enemies.forEach(wall::isColliding));
+        enemies.forEach(enemy->enemy.getWeapon().ifPresent(weapon -> weapon.areBulletsColiding(player)));
+        enemies.forEach(enemy->player.getWeapon().ifPresent(weapon -> weapon.areBulletsColiding(enemy)));
+        enemies.removeIf(enemy -> enemy.dead);
     }
     public void draw(){
         ScreenUtils.clear(Color.GRAY);

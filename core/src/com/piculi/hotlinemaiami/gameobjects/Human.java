@@ -25,6 +25,8 @@ public  class Human {
     private Walkable movement;
     private Lookable look;
     private Camera camera;
+    public boolean dead = false;
+    float hits = 0;
     public Human(float x, float y, Color color, Shootable weapon, Walkable movement, int speed, Lookable look, Camera camera){
         this.x = x;
         this.y = y;
@@ -49,7 +51,7 @@ public  class Human {
         weapon.ifPresent(shootable -> shootable.draw(shapeRenderer, spriteBatch, camera));
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(color);
-        shapeRenderer.circle(x, y, radius);
+        shapeRenderer.circle(x, y, radius-hits);
         shapeRenderer.end();
 
         shapeRenderer.begin();
@@ -108,5 +110,11 @@ public  class Human {
 
     public float getPreviousY() {
         return previousY;
+    }
+    public void hit(){
+        hits+=1f;
+        if (hits>=radius){
+            dead = true;
+        }
     }
 }

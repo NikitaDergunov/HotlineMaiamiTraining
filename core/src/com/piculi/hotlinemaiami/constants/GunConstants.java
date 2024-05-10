@@ -48,7 +48,8 @@ public class GunConstants {
     //RPG
     public static final int RPG_MAG_CAPACITY = 1;
     public static final int RPG_RELOAD_TIME = 2000;
-    public static final int RPG_BULLET_SPEED = 6;
+    public static final int RPG_BULLET_SPEED = 5;
+    public static final float RPG_BULLET_ACCELERATION = 0.2f;
     public static final int RPG_BULLET_HEIGHT = 10;
     public static final int RPG_BULLET_WIDTH = 5;
     public static final Color RPG_BULLET_COLOR = Color.BLACK;
@@ -59,6 +60,20 @@ public class GunConstants {
     public static final int RPG_SPREAD = 0;
     public static final int RPG_BULLET_FIRED_COUNT = 1;
     public static final int RPG_BULLET_DISTANCE = 2000;
+    //Railgun
+    public static final int RAILGUN_MAG_CAPACITY = 1;
+    public static final int RAILGUN_RELOAD_TIME = 2000;
+    public static final int RAILGUN_BULLET_SPEED = 30;
+    public static final int RAILGUN_BULLET_HEIGHT = 25;
+    public static final int RAILGUN_BULLET_WIDTH = 5;
+    public static final Color RAILGUN_BULLET_COLOR = Color.BLUE;
+    public static final long RAILGUN_TIME_BETWEEN_SHOTS = 2000;
+    public static final int RAILGUN_WIDTH = 10;
+    public static final int RAILGUN_HEIGHT = 30;
+    public static final Color RAILGUN_COLOR = Color.BLUE;
+    public static final int RAILGUN_SPREAD = 0;
+    public static final int RAILGUN_BULLET_FIRED_COUNT = 1;
+    public static final int RAILGUN_BULLET_DISTANCE = 2000;
 
 
 

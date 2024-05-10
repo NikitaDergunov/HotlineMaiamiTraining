@@ -57,7 +57,7 @@ public abstract class Weapon implements Shootable {
 
     @Override
     public boolean areBulletsColiding(Human human) {
-        return false;
+        return firedBullets.stream().anyMatch(bullet -> bullet.isCollidingWithHuman(human));
     }
 
     @Override
@@ -86,7 +86,15 @@ public abstract class Weapon implements Shootable {
     }
     @Override
     public void shoot() {
+        if(System.currentTimeMillis() - lastShot < timeBetweenShots) return;
         if(reloading) return;
+        if (bulletsLeftInMag==0&&magCount==0){
+            return;
+        }
+        if (bulletsLeftInMag == 0){
+            reloading = true;
+            return;
+        }
         bulletsLeftInMag--;
         lastShot = System.currentTimeMillis();
         for(int i = 0; i < bulletsAtOnce; i++){
@@ -104,7 +112,7 @@ public abstract class Weapon implements Shootable {
         heading = owner.heading;
         x = (float) (owner.x + owner.radius * Math.cos(heading));
         y = (float) (owner.y + owner.radius * Math.sin(heading));
-        if(Gdx.input.isButtonPressed(Input.Buttons.LEFT) && (System.currentTimeMillis() - lastShot > timeBetweenShots && bulletsLeftInMag > 0)){
+        if(Gdx.input.isButtonPressed(Input.Buttons.LEFT) ){
             shoot();
 
         }
